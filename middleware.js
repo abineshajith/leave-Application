@@ -4,7 +4,7 @@ export default middleware = (request)=>{
 
 const pathVariable = request.nextUrl.pathname; 
 
-const publicPaths = [ '/register','/update-profile','/forgot-password', '/login'];
+const publicPaths = ['/update-profile','/forgot-password', '/login'];
 
 const auth = request.cookies.get('token') || "";
 
@@ -22,12 +22,12 @@ if(!publicPaths.includes(pathVariable) && !auth){
 
 export const config = {
     matcher: [
-        '/',
+        // '/',
         '/update-profile',
         '/forgot-password',
         '/update-password',
-        '/register',
-        '/login'
+        // '/register',
+        // '/login'
 
     ]
 }
