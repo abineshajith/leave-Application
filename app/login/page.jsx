@@ -26,7 +26,7 @@ const LoginPage = () => {
       toast.success(data.message); // Assuming your backend sends a 'message' property
   
       resetForm();
-      router.push("/");
+      router.push("/profile");
     } catch (error) {
       if (error.response) {
         const errorMessage = error.response.data.message;

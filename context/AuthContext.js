@@ -37,7 +37,7 @@ export const AuthProvider = ({ children }) => {
       }
     };
 
-    const isPrivatePath = ['/', '/update-profile', '/profile'];
+    const isPrivatePath = [ '/update-profile', '/profile'];
 
     if (isPrivatePath.includes(pathName)) {
       fetchData();
