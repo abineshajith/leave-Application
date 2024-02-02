@@ -1,6 +1,7 @@
 "use client"
 import React, { useEffect, useState } from 'react';
 import { useAuth } from '@/context/AuthContext';
+import Link from 'next/link';
 
 
 const Profilepage = () => {
@@ -30,12 +31,14 @@ const Profilepage = () => {
               <label className="block text-gray-600 text-sm font-medium mb-2">Mobile</label>
               <p className="text-gray-800">{user.mobile}</p>
             </div>
+            <Link href={"/update-profile"}>
             <button
               className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline-blue"
               type="button"
             >
               Update Profile
             </button>
+            </Link>
           </>
         ) : (
           <p>Loading...</p>

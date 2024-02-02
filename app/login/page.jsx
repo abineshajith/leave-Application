@@ -13,12 +13,16 @@ const LoginPage = () => {
 
   const router=useRouter()
 
+  const [loading,setLoading]=React.useState(false)
+
   const initialValue ={
     email:"",
     password:""
   }
 
   const onSubmitHandler = async (values, { resetForm }) => {
+
+    setLoading(true);
     try {
       const response = await axios.post("api/login", values);
       const data = response.data;
@@ -27,6 +31,7 @@ const LoginPage = () => {
   
       resetForm();
       router.push("/profile");
+      setLoading(false);
     } catch (error) {
       if (error.response) {
         const errorMessage = error.response.data.message;
@@ -38,6 +43,7 @@ const LoginPage = () => {
         // Something happened in setting up the request that triggered an Error
         console.error("Error during request setup:", error.message);
       }
+      setLoading(false);
     }
   };
 
@@ -57,8 +63,8 @@ const LoginPage = () => {
             
             <Field className="p-2  rounded-xl border" id="password" type="password" name="password" placeholder="Enter Your password" autoComplete="current-password" />
             <ErrorMessage name="password" component={"p"} className='text-red-500'/>
-            <button type="submit" className="bg-[#002D74] rounded-xl text-white py-2 hover:scale-105 duration-300">
-              Login
+            <button type="submit" disabled={loading} className="bg-[#002D74] rounded-xl disabled:bg-green-200 text-white py-2 hover:scale-105 duration-300">
+              {loading?"loading":"login"}
             </button>
           </Form>
 

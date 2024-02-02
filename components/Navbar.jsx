@@ -18,8 +18,8 @@ const Navbar = () => {
       <header className="text-gray-600 body-font">
         <div className="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
           <Link href={''} className="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
-            <CiLock size={35} />
-            <span className="ml-3 text-xl">Authentication</span>
+         <img src="https://media.licdn.com/dms/image/C510BAQH4iKCyQozIEA/company-logo_200_200/0/1631346171097?e=2147483647&v=beta&t=qNYafM17XIRLnf8pIernDuB24M2ktIL01snp72bVl8s" alt="logo" className="w-10 h-10" />
+            <span className="ml-3 text-xl">Aroha Technologies</span>
           </Link>
           {!user && 
           <>
@@ -49,10 +49,6 @@ const Navbar = () => {
           <Link href={'/profile'} className="mr-5 hover:text-gray-900">
             Profile
           </Link>
-      
-         
-
-      
             <button
               onClick={logoutHandler}
               className="inline-flex items-center bg-indigo-500 border-0 py-1 px-3 focus:outline-none hover:bg-indigo-700 rounded text-white mt-4 md:mt-0"

@@ -16,6 +16,11 @@ const forgotPassword = Yup.object({
   email: Yup.string()
     .email("Invalid email address")
     .required("Email is required"),
+});
+const Updatepassword = Yup.object({
+  email: Yup.string()
+  .email("Invalid email address")
+  .required("Email is required"),
   password: Yup.string()
     .matches(
       /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d@$!%*#?&]{6,}$/,
@@ -42,4 +47,12 @@ const registrationValidationSchema = Yup.object({
       .required('Mobile number is required'),
   });
 
-  export { loginValidationSchema, registrationValidationSchema,forgotPassword};
+  const profileValidationSchema = Yup.object({
+    name: Yup.string().required('Name is required'),
+    email: Yup.string().email('Invalid email address').required('Email is required'),
+    mobile: Yup.string()
+      .matches(/^\d{10}$/, 'Mobile number must be 10 digits')
+      .required('Mobile number is required'),
+  });
+
+  export { loginValidationSchema, registrationValidationSchema,forgotPassword,profileValidationSchema,Updatepassword};

@@ -6,7 +6,6 @@ export default middleware = (request) => {
 
   const publicPaths = [
     "/register",
-    '/update-profile',
     '/forgot-password',
     '/update-password',
     '/login'

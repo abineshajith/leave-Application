@@ -5,6 +5,7 @@ import { forgotPassword } from '@/validation/validation'
 import {toast} from "react-hot-toast"
 import { useRouter } from 'next/navigation'
 import Link from 'next/link';
+import axios from 'axios';
 
 
 
@@ -14,20 +15,31 @@ const ForgotPassword = () => {
 
   const initialValue ={
     email:"",
-    password:"",
-    Cpassword:""
 
   }
 
-  const onSubmitHandler=(e,{resetForm})=>{
+  const onSubmitHandler = async (values, { resetForm }) => {
     try {
-      toast.success("Recovered Successfully");
-      resetForm()
+      const response = await axios.post("/api/forgotpassword", values);
+      const data = response.data;
+  
+      resetForm();
+      toast.success(data.message);
       router.push("/login");
     } catch (error) {
-      toast.error(error?.response?.data?.message);
+      // Handle different error scenarios
+      if (error.response) {
+        // The request was made, but the server responded with an error status
+        toast.error(`Server Error: ${error.response.data.message}`);
+      } else if (error.request) {
+        // The request was made, but no response was received
+        toast.error("No response received from the server");
+      } else {
+        // Something happened in setting up the request that triggered an Error
+        toast.error(`Request Setup Error: ${error.message}`);
+      }
     }
-  }
+  };
   return (
     <div className='min-h-screen w-full flex items-center justify-center'>
    <Formik validationSchema={forgotPassword} initialValues={initialValue} onSubmit={onSubmitHandler}>
@@ -41,12 +53,6 @@ const ForgotPassword = () => {
 
             <Field className="p-2 rounded-xl border" id="email" type="text" name="email" placeholder="Enter Your Email" autoComplete="current-Email" />
             <ErrorMessage name='email' component={"p"} className='text-red-500'/>
-            
-            <Field className="p-2  rounded-xl border" id="password" type="password" name="password" placeholder="Enter Your password" autoComplete="current-password" />
-            <ErrorMessage name="password" component={"p"} className='text-red-500'/>
-
-            <Field className="p-2  rounded-xl border" id="Cpassword" type="password" name="Cpassword" placeholder="Confirm Your password" autoComplete="current-password" />
-            <ErrorMessage name="Cpassword" component={"p"} className='text-red-500'/>
 
             <button type="submit" className="bg-[#002D74] rounded-xl text-white py-2 hover:scale-105 duration-300">
               Register
