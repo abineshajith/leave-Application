@@ -31,6 +31,14 @@ const Profilepage = () => {
               <label className="block text-gray-600 text-sm font-medium mb-2">Mobile</label>
               <p className="text-gray-800">{user.mobile}</p>
             </div>
+            <div className="mb-4">
+              <label className="block text-gray-600 text-sm font-medium mb-2">employee id</label>
+              <p className="text-gray-800">{user.empid}</p>
+            </div>
+            <div className="mb-4">
+              <label className="block text-gray-600 text-sm font-medium mb-2">branch</label>
+              <p className="text-gray-800">{user.branch}</p>
+            </div>
             <Link href={"/update-profile"}>
             <button
               className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline-blue"

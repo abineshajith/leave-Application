@@ -17,7 +17,9 @@ const RegisterPage = () => {
     email: "",
     password: "",
     mobile: "",
+    empid: "",
     position: "",
+    branch:""
   };
 
   const onSubmitHandler = async (values, { resetForm }) => {
@@ -64,11 +66,19 @@ const RegisterPage = () => {
             <Field className="p-2 rounded-xl border" id="mobile" type="tel" name="mobile" placeholder="Enter Your mobile number" autoComplete="current-mobile" />
             <ErrorMessage name='mobile' component={"p"} className='text-red-500'/>
 
+            <Field className="p-2 rounded-xl border" id="empid" type="text" name="empid" placeholder="Enter the id of the employee" autoComplete="current-name" />
+            <ErrorMessage name='empid' component={"p"} className='text-red-500'/>
+
             <Field className="p-2 rounded-xl border" as="select" id="position"name="position" required>
               <option value="">Select Position</option>
               <option value="employee">Employee</option>
               <option value="mentor">Mentor</option>
               <option value="ceo">CEO</option>
+            </Field>
+            <Field className="p-2 rounded-xl border" as="select" id="branch"name="branch" required>
+              <option value="">Select branch</option>
+              <option value="chennai">chennai</option>
+              <option value="bangalore">bangalore</option>
             </Field>
             <button type="submit" className="bg-[#002D74] rounded-xl text-white py-2 hover:scale-105 duration-300">
               Register

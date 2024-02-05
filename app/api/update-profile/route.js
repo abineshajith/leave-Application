@@ -10,7 +10,7 @@ await connectMongodb();
 export const PUT = async (request) => {
   try {
     // Extract user data from the request body
-    const { name, email, mobile, position } =await request.json();
+    const { name, email, mobile, position,empid,branch } =await request.json();
 
     // Get the authentication token from the 'token' cookie
     const auth = request.cookies.get('token') || '';
@@ -33,7 +33,7 @@ export const PUT = async (request) => {
 
     // Update user information in the database
     const updatedUser = await User.findByIdAndUpdate(userId, {
-      $set: { name, email, mobile, position }
+      $set: { name, email, mobile, position,empid,branch }
     }, { new: true });
 
     // Check if the user exists in the database

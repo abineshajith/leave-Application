@@ -25,7 +25,6 @@ export default middleware = (request) => {
 // Use `matcher` as an array of strings
 export const config = {
   matcher: [
-
     '/update-profile',
     '/forgot-password',
     '/update-password',

@@ -5,7 +5,7 @@ import {NextResponse} from 'next/server';
 
 export async function POST(req) {
     try {
-        const { name, email, password,mobile,position } = await req.json();
+        const { name, email, password,mobile,position,empid,branch} = await req.json();
 
         await connectMongodb();
 
@@ -18,7 +18,7 @@ export async function POST(req) {
         }
 
         // Create a new user if no existing user found
-        await User.create({ name, email, password,mobile,position });
+        await User.create({ name, email, password,mobile,position,empid,branch });
 
         return NextResponse.json({ message: "User registered" }, { status: 201 });
     } catch (error) {

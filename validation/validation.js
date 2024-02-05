@@ -34,25 +34,43 @@ const Updatepassword = Yup.object({
 
 
 const registrationValidationSchema = Yup.object({
-    name: Yup.string().required('Name is required'),
-    email: Yup.string().email('Invalid email address').required('Email is required'),
-    password: Yup.string()
-      .matches(
-        /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d@$!%*#?&]{6,}$/,
-        'Password must contain at least 6 characters, including at least one letter and one number'
-      )
-      .required('Password is required'),
-    mobile: Yup.string()
-      .matches(/^\d{10}$/, 'Mobile number must be 10 digits')
-      .required('Mobile number is required'),
-  });
+  name: Yup.string()
+    .trim()
+    .required('Name is required')
+    .matches(/^[^\s].*$/, 'Name should not start with a space')
+    .matches(/\S+$/, 'Name should not contain only spaces'),
+  email: Yup.string().email('Invalid email address').required('Email is required'),
+  password: Yup.string()
+    .matches(
+      /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d@$!%*#?&]{6,}$/,
+      'Password must contain at least 6 characters, including at least one letter and one number'
+    )
+    .required('Password is required'),
+  mobile: Yup.string()
+    .matches(/^\d{10}$/, 'Mobile number must be 10 digits')
+    .required('Mobile number is required'),
+  empid: Yup.string()
+    .trim()
+    .required('empid is required')
+    .matches(/^[^\s].*$/, 'empid should not start with a space')
+    .matches(/\S+$/, 'empid should not contain only spaces'),
+});
 
   const profileValidationSchema = Yup.object({
-    name: Yup.string().required('Name is required'),
+    name: Yup.string()
+    .trim()
+    .required('Name is required')
+    .matches(/^[^\s].*$/, 'Name should not start with a space')
+    .matches(/\S+$/, 'Name should not contain only spaces'),
     email: Yup.string().email('Invalid email address').required('Email is required'),
     mobile: Yup.string()
       .matches(/^\d{10}$/, 'Mobile number must be 10 digits')
       .required('Mobile number is required'),
+      empid: Yup.string()
+      .trim()
+      .required('empid is required')
+      .matches(/^[^\s].*$/, 'empid should not start with a space')
+      .matches(/\S+$/, 'empid should not contain only spaces'),
   });
 
   export { loginValidationSchema, registrationValidationSchema,forgotPassword,profileValidationSchema,Updatepassword};
