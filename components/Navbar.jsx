@@ -4,7 +4,8 @@ import { Toaster } from 'react-hot-toast';
 import { CiLock } from 'react-icons/ci';
 import Link from 'next/link';
 import { useAuth } from '../context/AuthContext';
-
+import arohalogo from '../public/aroha.jpeg'
+import Image from 'next/image'
 
 const Navbar = () => {
   const { user,logoutHandler } = useAuth();
@@ -18,8 +19,8 @@ const Navbar = () => {
       <header className="text-gray-600 body-font">
         <div className="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
           <Link href={''} className="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
-         <img src="https://media.licdn.com/dms/image/C510BAQH4iKCyQozIEA/company-logo_200_200/0/1631346171097?e=2147483647&v=beta&t=qNYafM17XIRLnf8pIernDuB24M2ktIL01snp72bVl8s" alt="logo" className="w-10 h-10" />
-            <span className="ml-3 text-xl">Aroha Technologies</span>
+         <Image src={arohalogo} alt="logo" className="w-12 h-10" />
+         <span className="ml-3 text-xl">Aroha Technologies</span>
           </Link>
           {!user && 
           <>
